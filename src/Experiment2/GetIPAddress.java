@@ -20,9 +20,7 @@ public class GetIPAddress {
         try {
             InetAddress host = InetAddress.getByName(new URL(url).getHost());
             return host.getHostAddress();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
+        } catch (UnknownHostException | MalformedURLException e) {
             e.printStackTrace();
         }
         return null;

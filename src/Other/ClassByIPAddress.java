@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 
 public class ClassByIPAddress {
     private String ipAddress;
-    private final int max = (1<<8) - 1;
 
     ClassByIPAddress() throws UnknownHostException {
         InetAddress inetAddress = InetAddress.getLocalHost();
@@ -38,6 +37,7 @@ public class ClassByIPAddress {
 
         if(size==4){
             for(int i=0; i<4; i++){
+                int max = (1 << 8) - 1;
                 if(data[i] > max)
                     return "Invalid IP Address";
             }

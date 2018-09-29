@@ -2,6 +2,7 @@ package Experiment3;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -20,7 +21,8 @@ public class OpenPorts {
     public void printOpenPorts() throws IOException {
         for(int i=0; i<65366; i++) {
             try {
-                Socket socket = new Socket(proxy, i);
+                Socket socket = new Socket();
+                socket.connect(new InetSocketAddress(proxy,i),100);
                 System.out.println("Port not in use: " + i );
                 socket.close();
             }catch(Exception e){
